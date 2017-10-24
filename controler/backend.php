@@ -1,6 +1,7 @@
 <?php
 require('model/backend.php');
 
+
 function formConnect()
 {
 	require('view/backend/connectView.php');
@@ -35,6 +36,14 @@ function updatePost()
 {
 	if(isset($_POST['updatePost'])) {
 		doUpdatePost();
+	}
+}
+
+function deletePost()
+{
+	if(isset($_POST['deletePost'])) {
+		doDeletePost();
+		header("Location:index.php?action=logon");
 	}
 }
 

@@ -26,25 +26,34 @@ function doUpdatePost()
 	$db = dbConnect();
 	$req = $db->prepare('UPDATE post SET title = :newtitle, content = :newcontent, datepost = NOW(),statepost = :newstatepost WHERE id =:id');
 	$req->execute(array(
-		'newtitle'=>$_POST['newtitle'],
-		'newcontent'=>$_POST['newcontent'],
+		'newtitle'=>htmlspecialchars($_POST['newtitle']),
+		'newcontent'=>htmlspecialchars($_POST['newcontent']),
 		'newstatepost'=>$_POST['newstatepost'],
 		'id'=>$_GET['id']));
+}
+
+function doDeletePost()
+{
+	$db = dbConnect();
+	$message=$db->prepare('DELETE FROM post WHERE id=?');
+    $message->execute(array($_GET['id']));
+
 }
 
 function doAddPost()
 {
 	$db = dbConnect();
 	$req = $db->prepare('INSERT INTO post(title,content,datepost) VALUES (?,?,now())');
-	$req->execute(array($_POST['addTitle'],$_POST['addContent']));
+	$req->execute(array($_POST['addTitle'],htmlspecialchars($_POST['addContent'])));
 	
 }
 
-function countPostsNotVisible()
+function countPostsNotVisible($statepost)
 {
+	
 	$db = dbConnect();
-	$req = $db->prepare('SELECT COUNT(*) AS nbposts FROM post WHERE statepost=?');
-	$req->execute(array($statepost));
+	$req = $db->prepare('SELECT COUNT(*) AS nbposts FROM post WHERE statepost=:statepost');
+	$req->execute(array('statepost' => $statepost));
 	$nbposts =$req->fetch();
 	return $nbposts;
 }

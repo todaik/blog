@@ -60,7 +60,7 @@ try{
 			if(isset($_GET['id']) && $_GET['id']>0) {
 				updatePost();
 				backPost();
-
+				deletePost();
 			}
 		}
 		elseif(($_GET['action'] == 'addpost')) {

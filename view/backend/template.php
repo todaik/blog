@@ -6,10 +6,11 @@
         <title><?= $titlePage ?></title>
         <link href="public/css/style.css" rel="stylesheet"/>
         <link href="public/css/wbbtheme.css" rel="stylesheet"/>
-        <script type ="text/javascript" src="public/js/jquery.tinymce.min.js"></script>
-        <script type ="text/javascript" src="public/plugin/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">tinyMCE.init({selector:"textareas"});</script>
-        
+
+        <script type ="text/javascript" src="public\plugin\tinymce\js\tinymce\jquery.tinymce.min.js"></script>
+        <script type ="text/javascript" src="public\plugin\tinymce\js\tinymce\tinymce.min.js"></script>
+
+        <script>tinymce.init({ selector:'textarea' });</script>
     </head>
     <header>
 
@@ -18,7 +19,8 @@
     </header> 
     <body>
         <?= $contentPage ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
     </body>
     <footer>
     	
