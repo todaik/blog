@@ -10,7 +10,10 @@
         <script type ="text/javascript" src="public\plugin\tinymce\js\tinymce\jquery.tinymce.min.js"></script>
         <script type ="text/javascript" src="public\plugin\tinymce\js\tinymce\tinymce.min.js"></script>
 
-        <script>tinymce.init({ selector:'textarea' });</script>
+        <script>
+            tinymce.init({ selector:'textarea',
+                        language: 'fr_FR' });
+        </script>
     </head>
     <header>
 

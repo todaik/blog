@@ -26,8 +26,8 @@ function doUpdatePost()
 	$db = dbConnect();
 	$req = $db->prepare('UPDATE post SET title = :newtitle, content = :newcontent, datepost = NOW(),statepost = :newstatepost WHERE id =:id');
 	$req->execute(array(
-		'newtitle'=>htmlspecialchars($_POST['newtitle']),
-		'newcontent'=>htmlspecialchars($_POST['newcontent']),
+		'newtitle'=>$_POST['newtitle'],
+		'newcontent'=>$_POST['newcontent'],
 		'newstatepost'=>$_POST['newstatepost'],
 		'id'=>$_GET['id']));
 }
@@ -44,17 +44,18 @@ function doAddPost()
 {
 	$db = dbConnect();
 	$req = $db->prepare('INSERT INTO post(title,content,datepost) VALUES (?,?,now())');
-	$req->execute(array($_POST['addTitle'],htmlspecialchars($_POST['addContent'])));
+	$req->execute(array($_POST['addTitle'],$_POST['addContent']));
 	
 }
 
-function countPostsNotVisible($statepost)
+function countPosts($statepost)
 {
 	
 	$db = dbConnect();
 	$req = $db->prepare('SELECT COUNT(*) AS nbposts FROM post WHERE statepost=:statepost');
 	$req->execute(array('statepost' => $statepost));
-	$nbposts =$req->fetch();
+	$nbposts = $req->fetch();
+	$nbposts = $nbposts['nbposts'];
 	return $nbposts;
 }
 
@@ -64,7 +65,6 @@ function isUserAdmin($pseudo,$mdp)
 	$reqAdmin = $db->prepare('SELECT * FROM user WHERE pseudo=:pseudo AND pass=:pass');
 	$reqAdmin->execute(array('pseudo' => $pseudo,'pass'=>sha1($mdp)));
 	
-	//
 	
 	$adminExist = $reqAdmin->rowCount();
 	
@@ -76,7 +76,7 @@ function isUserAdmin($pseudo,$mdp)
  		$_SESSION['pseudo'] = $adminInfo['pseudo'];
  		$_SESSION['mail'] = $adminInfo['mail'];
  		
- 		//header("Location:index.php?action=logon");
+ 		
  		return TRUE;
 	}
 	else

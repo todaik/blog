@@ -3,15 +3,14 @@
 		<?php $titlePage ='Billet simple pour ALASKA';?>
 		<h1>Oups! </h1>
 		<p>Une erreur est survenue</p>
+		<h2><?= $errorMessage; ?></h2>
 	</div>
 </header>
 
 
 	<?php ob_start();?>        
 	
-	<div class="news">
-	    <?= $errorMessage; ?>
-	</div>
+
 	
 	
 	<?php $contentPage = ob_get_clean(); ?>	
