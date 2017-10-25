@@ -16,7 +16,7 @@ function getPosts($offset, $limit)
 function getPost($postId)
 {
 	$db = dbConnect();
-	$req = $db->prepare('SELECT id, title, content,abstract, DATE_FORMAT(datepost, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatepost, statepost FROM post WHERE id = ?');
+	$req = $db->prepare('SELECT id, title, content, abstract, DATE_FORMAT(datepost, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatepost, statepost FROM post WHERE id = ?');
     $req->execute(array($postId));
     $post = $req->fetch();
 
