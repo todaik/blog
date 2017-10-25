@@ -9,8 +9,9 @@
 
 <div>
 	<form action="index.php?action=updatepost&id=<?=$_GET['id']?>" method="post">
-		<label for="newtitle">Titre:</label><input type="text" name="newtitle" value="<?= htmlspecialchars($post['title']); ?>"><br><br>
-		<label for="newcontent">Billet:</label><textarea id="newcontent"  rows="20" cols="60" name="newcontent" ><?= nl2br(htmlspecialchars($post['content'])); ?></textarea><br><br><br>
+		<label for="newtitle">Titre:</label><input type="text" name="newtitle" value="<?=$post['title']; ?>"><br><br>
+		<label for="newAddAbstract">Résumé:</label><br><input  type="text" id="newAddAbstract" value="<?= $post['abstract']; ?>" name="newAddAbstract" style="width: 300px; height: 200px;"><br><br>
+		<label for="newcontent">Billet:</label><textarea id="newcontent"  rows="20" cols="60" name="newcontent" ><?=$post['content']; ?></textarea><br><br><br>
 		<label id="newstatepost">Etat de l'article :</label>
 		<select name="newstatepost">
 			<option <?php if($post['statepost']=='brouillon'){echo 'selected';}?>>brouillon</option>

@@ -24,12 +24,20 @@ function getPostsBack($offset, $limit)
 function doUpdatePost()
 {
 	$db = dbConnect();
-	$req = $db->prepare('UPDATE post SET title = :newtitle, content = :newcontent, datepost = NOW(),statepost = :newstatepost WHERE id =:id');
+	$req = $db->prepare('UPDATE post SET title = :newtitle, content = :newcontent, abstract = :newabstract, datepost = NOW(),statepost = :newstatepost WHERE id =:id');
 	$req->execute(array(
 		'newtitle'=>$_POST['newtitle'],
 		'newcontent'=>$_POST['newcontent'],
+		'newabstract'=>$_POST['newAddAbstract'],
 		'newstatepost'=>$_POST['newstatepost'],
 		'id'=>$_GET['id']));
+}
+
+function incrementSignaledComment()
+{
+	$db = dbConnect();
+	$req = $db->prepare('UPDATE comments SET signaled = signaled +1 WHERE id = :id');
+	$req->execute(array('id'=>$_GET['id']));
 }
 
 function doDeletePost()
@@ -43,8 +51,8 @@ function doDeletePost()
 function doAddPost()
 {
 	$db = dbConnect();
-	$req = $db->prepare('INSERT INTO post(title,content,datepost) VALUES (?,?,now())');
-	$req->execute(array($_POST['addTitle'],$_POST['addContent']));
+	$req = $db->prepare('INSERT INTO post(title,content,abstract,datepost) VALUES (?,?,?,now())');
+	$req->execute(array($_POST['addTitle'],$_POST['addContent'],$_POST['addAbstract']));
 	
 }
 
