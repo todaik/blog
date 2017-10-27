@@ -1,16 +1,4 @@
-<header class="masthead">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto">
-				<div class="post-heading">
-					<?php $titlePage ='Billet simple pour ALASKA';?>
-					<h1>Billet simple pour l'Alaska </h1>
-					<h2>Mes derniers billets du blog :</h2>
-				</div>
-			</div>
-		</div>
-	</div>	
-</header>
+<?php $titlePage = "Voyage en Alaska"; ?>
 
 <article>
 	<div class="container">
