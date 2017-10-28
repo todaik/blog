@@ -85,7 +85,7 @@
                   </li>
                 </ul>
                 <p class="copyright text-muted"><a href="index.php?action=connexion" >Administration</a></p>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
+                <p class="copyright text-muted">Copyright &copy; By Todaik tous droits réservés</p>
               </div>
             </div>
           </div>
