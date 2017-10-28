@@ -22,15 +22,15 @@ try{
 		}
 		elseif($_GET['action'] == 'addComment') {
 			if (isset($_GET['id']) && $_GET['id']>0) {
-				if ($_GET['signal'] =='ok') {
-					incrementSignaledComment();
+				//elseif ($_GET['signal'] =='ok') {
+					//incrementSignaledComment();
 					if (!empty($_POST['author']) && !empty($_POST['comment'])) {
 					addComment($_GET['id'],$_POST['author'],$_POST['comment']);
 					}
 					else {
 					throw new Exception("Tous les champs ne sont pas remplis !");
 					}
-				}
+				//}
 				
 			}
 			else {
