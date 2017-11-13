@@ -42,6 +42,7 @@ function updatePost()
 function deletePost()
 {
 	if(isset($_POST['deletePost'])) {
+		doDeleteComments();
 		doDeletePost();
 		header("Location:index.php?action=logon");
 	}

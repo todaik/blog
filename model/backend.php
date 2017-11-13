@@ -33,11 +33,14 @@ function doUpdatePost()
 		'id'=>$_GET['id']));
 }
 
-function incrementSignaledComment()
+
+
+function doDeleteComments()
 {
 	$db = dbConnect();
-	$req = $db->prepare('UPDATE comments SET signaled = signaled +1 WHERE id = :id');
-	$req->execute(array('id'=>$_GET['id']));
+	$message=$db->prepare('DELETE FROM comments WHERE post_id=?');
+    $message->execute(array($_GET['id']));
+
 }
 
 function doDeletePost()

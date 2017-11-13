@@ -32,6 +32,18 @@ function addComment($postId, $author, $comment)
 	}
 }
 
+function doSignaledComment($postId)
+{
+	$affectedLines = incrementSignaledComment();
+
+	if($affectedLines === false) {
+		throw new Exception("Impossible de signaler le commentaire !");
+	}
+	else {
+		header('Location: index.php?action=post&id='.$postId);
+	}
+}
+
 
 
 

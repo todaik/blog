@@ -66,7 +66,7 @@
 		while($comment=$comments->fetch()) {
 		?>
 			<div class="col-lg-8 col-md-10 mx-auto">
-				<p>le <?=htmlspecialchars($comment['newdatecomment'])?> <strong><?=htmlspecialchars($comment['author'])?></strong> a écrit  : <?=htmlspecialchars($comment['comment'])?>&nbsp;&nbsp;&nbsp;<a href="index.php?action=addComment&amp;id=<?= $post['id']?>&amp;signal=ok">signaler</a></p>
+				<p>le <?=htmlspecialchars($comment['newdatecomment'])?> <strong><?=htmlspecialchars($comment['author'])?></strong> a écrit  : <?=htmlspecialchars($comment['comment'])?>&nbsp;&nbsp;&nbsp;<a href="index.php?action=signalComment&amp;id=<?= $comment['post_id']?>&amp;idComment=<?= $comment['id']?>">signaler</a></p>
 			</div>
 		<?php
 		}

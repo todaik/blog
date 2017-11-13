@@ -26,7 +26,7 @@ function getPost($postId)
 function getComments($postId)
 {
 	$db = dbConnect();
-	$comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment FROM comments WHERE post_id = ?');
+	$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment FROM comments WHERE post_id = ?');
     $comments->execute(array($postId));
    
     return $comments;
@@ -40,7 +40,12 @@ function postComment($postId, $author, $comment)
     return $affectedLines;
 }
 
-
+function incrementSignaledComment()
+{
+	$db = dbConnect();
+	$req = $db->prepare('UPDATE comments SET signaled = signaled +1 WHERE id = :id');
+	$req->execute(array('id'=>$_GET['idComment']));
+}
 
 function dbConnect()
 {
