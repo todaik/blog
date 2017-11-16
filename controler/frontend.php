@@ -1,20 +1,26 @@
 <?php
-require('model/frontend.php');
+//require('model/frontend.php');
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
+
 
 function listPosts()
 {
 	
-	$posts = getPosts(0,20);
+	$PostManager = new PostManager();
+	$posts = $PostManager->getPosts(0,10);
 	require('view/frontend/indexView.php');
 }
 
 
 function post()
 {
-	
+	$PostManager = new PostManager();
+	$CommentManager = new CommentManager();
+
 	if (isset($_GET['id']) && $_GET['id']>0) {
-		$post = getPost($_GET['id']);
-		$comments = getComments($_GET['id']);
+		$post = $PostManager->getPost($_GET['id']);
+		$comments = $CommentManager->getComments($_GET['id']);
 		require("view/frontend/postView.php");
 	}
 	
@@ -22,7 +28,8 @@ function post()
 
 function addComment($postId, $author, $comment)
 {
-	$affectedLines = postComment($postId, $author, $comment);
+	$CommentManager = new CommentManager();
+	$affectedLines = $CommentManager->postComment($_GET['id'], $_POST['author'], $_POST['comment']);
 
 	if($affectedLines === false) {
 		throw new Exception("Impossible d\'ajouter le commentaire !");
@@ -34,7 +41,8 @@ function addComment($postId, $author, $comment)
 
 function doSignaledComment($postId)
 {
-	$affectedLines = incrementSignaledComment();
+	$CommentManager = new CommentManager();
+	$affectedLines = $CommentManager->incrementSignaledComment($_GET['idComment']);
 
 	if($affectedLines === false) {
 		throw new Exception("Impossible de signaler le commentaire !");
