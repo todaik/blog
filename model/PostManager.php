@@ -1,39 +1,22 @@
 <?php
-class PostManager extends Manager
+class PostManager 
 {
 	public function add(post $post)
 	{
-		$req = $this->db->prepare('INSERT INTO post SET title = :title, content = :content, abstract = :abstractPost, datepost = NOW(),statepost = :statePost');
 
-		$req->bindValue(':title,' $post->title());
-		$req->bindValue(':content,' $post->content());
-		$req->bindValue(':abstractPost,' $post->abstractPost());
-		$req->bindValue(':statePost,' $post->statePost());
-
-		$req->execute();
 
 	}
 
 	public function update()
 	{
 		
-		$req = $this->db->prepare('UPDATE post SET title = :title, content = :content, abstract = :abstractPost, updatedatepost = NOW(),statepost = :statePost WHERE id =:id');
-		$req->bindValue(':title,' $post->title());
-		$req->bindValue(':content,' $post->content());
-		$req->bindValue(':abstractPost,' $post->abstractPost());
-		$req->bindValue(':statePost,' $post->statePost());
-		$req->bindValue(':id,' $post->id(), PDO::PARAM_INT);
 
-		$req->execute();
 
 	}
 
 	public function delete($id)
 	{
-		
-		$this->db->prepare(('DELETE FROM post WHERE id = :id');
-		$req->bindValue(':id,' $post->id(), PDO::PARAM_INT);
-		$req->execute();
+
 	}
 
 	public function getPosts($offset, $limit)
@@ -65,14 +48,12 @@ class PostManager extends Manager
 
 	public function save(post $post)
 	{
-		if ($post->isValid())
-		{
-			$post->isNew() , $this->add($post) : $this->update($post);
-		}
-		else
-		{
-			throw new Exception("L\'article doit être valide pour être enregistrée");
-			
-		}
+
+	}
+
+	protected function dbConnect()
+	{
+		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>pdo::ERRMODE_EXCEPTION));
+	    return $db;
 	}
 }
