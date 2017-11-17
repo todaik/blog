@@ -7,6 +7,7 @@
                     <h1>Espace administration</h1>
                     <span class="subheading">Pseudo : <?= $_SESSION['pseudo'];?></span>
                     <span class="subheading">Mail : <?= $_SESSION['mail'];?></span>
+                    <span class="subheading"><a href="">Voir les 5 commentaires signalés</a></span>
                 </div>
             </div>
         </div>
