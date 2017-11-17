@@ -8,7 +8,7 @@ function listPosts()
 {
 	
 	$PostManager = new PostManager();
-	$posts = $PostManager->getPosts(0,10);
+	$posts = $PostManager->getPostsVisible(0,10);
 	require('view/frontend/indexView.php');
 }
 
