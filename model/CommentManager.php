@@ -1,6 +1,16 @@
 <?php
 class CommentManager
 {
+	
+	public function doDeleteComments($postId)
+	{
+		$db = $this->dbConnect();
+		$message=$db->prepare('DELETE FROM comments WHERE post_id=?');
+	    $message->execute(array($postId));
+
+	}
+
+
 	public function getComments($postId)
 	{
 		$db = $this->dbConnect();
@@ -9,6 +19,21 @@ class CommentManager
 	   
 	    return $comments;
 	}
+
+		public function getSignaledComments($postId)
+		{
+			$db = $this->dbConnect();
+			$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment FROM comments WHERE signaled >=1 ');
+		    $comments->execute(array($postId));
+		   
+		    return $comments;
+		}
+
+		public function countSignaledcomments()
+		{
+			return $this->db->query('SELECT COUNT(*) FROM comments WHERE signaled >=1')->fetchColumn();
+		}
+
 
 	public function postComment($postId, $author, $comment)
 	{
