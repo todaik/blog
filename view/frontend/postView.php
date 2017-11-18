@@ -25,10 +25,11 @@
 		</div>
 	</div>
 </article>
+<hr>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-8 col-md-10 mx-auto">
-			<h2>Commentaires</h2>
+		<div class="col-lg-8 mx-auto">
+			<h2>Commentaires</h2><br>
 			<form action="index.php?action=addComment&amp;id=<?= $post['id']?>" method="post" class="form-inline" novalidate>
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls" >
@@ -37,7 +38,11 @@
 						<p class="help-block text-danger"></p>
 					</div>
 				</div>
+			</div>
+		</div>
 				
+	<div class="row">
+		<div class="col-lg-8 mx-auto">			
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls" >
 						<label for="comment">Commentaire</label>
@@ -45,9 +50,13 @@
 						<p class="help-block text-danger"></p>
 					</div>
 				</div>
-				<br>
-				<div id="success"></div>
-				<div class="form-group" >
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-8 mx-auto">
+			<div id="success"></div>
+				<div class="form-group">
 					<br/>
 					<input type="submit" value="Envoyer" class="btn btn-secondary">
 					<p class="help-block text-danger"></p>
@@ -56,9 +65,7 @@
 		</div>
 	</div>
 </div>
-
-
-
+<hr>
 
 <div class="container">
 	<div class="row">
