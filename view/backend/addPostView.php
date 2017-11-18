@@ -3,10 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading">
+                <div class="page-heading">
                     <h1>Ajouter un nouvel article</h1>
-                    <span class="subheading">Citation Jules Vernes : "Ce ne sont pas de nouveaux continents qu'il faut à la terre, mais de nouveaux hommes!"</span>
-                    
+                    <span class="subheading">Citation Jules Vernes : "Ce ne sont pas de nouveaux continents qu'il faut à la terre, mais de nouveaux hommes!"</span> 
                 </div>
             </div>
         </div>
@@ -18,28 +17,34 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-6 mx-auto">
 			<form action="" method="post" class="form-inline" novalidate>
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls">
-						<label class="sr-only" for="addTitle">Titre:</label><input type="text" class="form-group" name="addTitle" placeholder="Insère ton titre" required data-validation-required-message="Entrez le titre.">
-						<p class="help-block text-danger"></p><br><br>
-					</div>
-				</div>
-				<br><br><br><br>
-				<div class="control-group">
-					<div class="form-group floating-label-form-group controls">
-						<label class="sr-only" for="addAbstract">Résumé:</label><br><input class="form-group" type="text" id="addAbstract"  placeholder="Insère ton résumé ici"  name="addAbstract" style="width: 300px; height: 200px;" required data-validation-required-message="Entrez le titre.">
-						<p class="help-block text-danger"></p>
-						<br><br><hr>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="form-group floating-label-form-group controls">
-						<label for="addContent">Billet:</label><br><textarea id="addContent"  placeholder="Insère ton billet ici" rows="20" cols="600" name="addContent" ></textarea><br><br><br>
+						<label class="sr-only" for="addTitle">Titre:</label>
+						<input type="text" class="form-group" name="addTitle" placeholder="Insère ton titre" required data-validation-required-message="Entrez le titre.">
 						<p class="help-block text-danger"></p>
 					</div>
 				</div>
+				
+				<div class="control-group">
+					<div class="form-group floating-label-form-group controls">
+						<label class="sr-only" for="addAbstract">Résumé:</label>
+						<textarea class="form-group" type="text" id="addAbstract"  placeholder="Insère ton résumé ici"  name="addAbstract" rows="5" cols="600" required data-validation-required-message="Entrez le titre.">
+						</textarea>
+						<p class="help-block text-danger"></p>
+
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="form-group col-xs-12 floating-label-form-group controls">
+						<label for="addContent">Billet:</label>
+						<textarea id="addContent"  placeholder="Insère ton billet ici" rows="20" cols="600"  name="addContent" >Vous pouvez écrire l'article ici.</textarea>
+						<p class="help-block text-danger"></p>
+					</div>
+				</div>
+				<br>
+				<div id="success"></div>
 				<div class="control-group">
 					<div class="form-group ">
 						<input type="submit" name="addPost" value="Ajouter" class="btn btn-secondary">
