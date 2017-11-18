@@ -14,7 +14,9 @@ function logOn()
 {
 	
 	$PostManager = new PostManager();
+	$CommentManager = new CommentManager();
 	$posts = $PostManager->getPosts(0,20);
+	$comments = $CommentManager->countSignaledcomments();
 	require('view/backend/indexView.php');
 }
 
@@ -55,6 +57,26 @@ function deletePost()
 	}
 }
 
+function listCommentSignaled()
+{
+	$CommentManager = new CommentManager();
+	$comments = $CommentManager->getSignaledComments();
+	require("view/backend/commentsView.php");
+}
+
+function deleteComment()
+{
+	$CommentManager = new CommentManager();
+	$comment = $CommentManager->doDeleteComment($_GET['id']);
+	header("Location:index.php?action=listcomment");
+}
+
+function approveComment()
+{
+	$CommentManager = new CommentManager();
+	$comment = $CommentManager->doApproveComment($_GET['id']);
+	header("Location:index.php?action=listcomment");
+}
 
 
 function adminConnect()
