@@ -82,6 +82,22 @@ try{
 			
 			addPost();
 		}
+		elseif(($_GET['action'] == 'listcomment')) {
+			listCommentSignaled();
+		}
+		elseif (($_GET['action'] == 'deleteComment')) {
+			if (isset($_GET['id']) && $_GET['id']>0) {
+				deleteComment();
+			}
+			
+		}
+		elseif (($_GET['action'] == 'approveComment')) {
+			if (isset($_GET['id']) && $_GET['id']>0) {
+				approveComment();
+			}
+			
+		}
+	
 	}
 	else {	
 		listPosts();
