@@ -43,7 +43,7 @@
                   <a class="nav-link" href="index.php?action=logon">Articles</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?action=logon">Commentaires</a>
+                  <a class="nav-link" href="index.php?action=listcomment">Commentaires</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?action=logoff">Déconnexion</a>
