@@ -5,11 +5,26 @@ class CommentManager
 	public function doDeleteComments($postId)
 	{
 		$db = $this->dbConnect();
-		$message=$db->prepare('DELETE FROM comments WHERE post_id=?');
+		$message = $db->prepare('DELETE FROM comments WHERE post_id=?');
 	    $message->execute(array($postId));
 
 	}
 
+	public function doDeleteComment($id)
+	{
+		$db = $this->dbConnect();
+		$message = $db->prepare('DELETE FROM comments WHERE id=?');
+	    $message->execute(array($id));
+
+	}
+
+	public function doApproveComment($id)
+	{
+		$db = $this->dbConnect();
+		$comment = $db->prepare('UPDATE comments SET signaled = 0 WHERE id=:id');
+	    $comment->execute(array('id'=>$id));
+
+	}
 
 	public function getComments($postId)
 	{
@@ -20,18 +35,21 @@ class CommentManager
 	    return $comments;
 	}
 
-		public function getSignaledComments($postId)
+		public function getSignaledComments()
 		{
 			$db = $this->dbConnect();
-			$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment FROM comments WHERE signaled >=1 ');
-		    $comments->execute(array($postId));
+			$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment, signaled FROM comments WHERE signaled >=1 ');
+		    $comments->execute();
 		   
 		    return $comments;
 		}
 
 		public function countSignaledcomments()
 		{
-			return $this->db->query('SELECT COUNT(*) FROM comments WHERE signaled >=1')->fetchColumn();
+			$db = $this->dbConnect();
+			$comments = $db->query('SELECT COUNT(*) AS total FROM comments WHERE signaled >=1');
+			$comments->fetchColumn();
+			return $comments;
 		}
 
 
