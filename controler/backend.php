@@ -13,11 +13,17 @@ function formConnect()
 function logOn()
 {
 	
-	$PostManager = new PostManager();
-	$CommentManager = new CommentManager();
-	$posts = $PostManager->getPosts(0,20);
-	$comments = $CommentManager->countSignaledcomments();
-	require('view/backend/indexView.php');
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {
+		$PostManager = new PostManager();
+		$CommentManager = new CommentManager();
+
+		$posts = $PostManager->getPosts(0,20);
+		
+		require('view/backend/indexView.php');
+	}
+	else{
+		header("Location:index.php?action=connexion");
+	}
 }
 
 function logOff()
@@ -30,38 +36,58 @@ function logOff()
 
 function backPost()
 {
-	$PostManager = new PostManager();
-	if (isset($_GET['id']) && $_GET['id']>0) {
-		$post = $PostManager->getPost($_GET['id']);
-		require("view/backend/postView.php");
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {
+		$PostManager = new PostManager();
+		if (isset($_GET['id']) && $_GET['id']>0) {
+			$post = $PostManager->getPost($_GET['id']);
+			require("view/backend/postView.php");
+		}
+	}
+	else {
+		header("Location:index.php?action=connexion");
 	}
 	
 }
 
 function updatePost()
 {
-	$PostManager = new PostManager();
-	if(isset($_POST['updatePost'])) {
-		$post = $PostManager->doUpdatePost($_GET['id'],$_POST['newtitle'],$_POST['newAddAbstract'],$_POST['newcontent'],$_POST['newstatepost']);
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {
+		$PostManager = new PostManager();
+		if(isset($_POST['updatePost'])) {
+			$post = $PostManager->doUpdatePost($_GET['id'],$_POST['newtitle'],$_POST['newAddAbstract'],$_POST['newcontent'],$_POST['newstatepost']);
+		}
+	}
+	else {
+		header("Location:index.php?action=connexion");
 	}
 }
 
 function deletePost()
 {
-	$PostManager = new PostManager();
-	$CommentManager = new CommentManager();
-	if(isset($_POST['deletePost'])) {
-		$comments = $CommentManager->doDeleteComments($_GET['id']);
-		$post = $PostManager->doDeletePost($_GET['id']);
-		header("Location:index.php?action=logon");
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {	
+		$PostManager = new PostManager();
+		$CommentManager = new CommentManager();
+		if(isset($_POST['deletePost'])) {
+			$comments = $CommentManager->doDeleteComments($_GET['id']);
+			$post = $PostManager->doDeletePost($_GET['id']);
+			header("Location:index.php?action=logon");
+		}
+	}
+	else {
+		header("Location:index.php?action=connexion");
 	}
 }
 
 function listCommentSignaled()
 {
-	$CommentManager = new CommentManager();
-	$comments = $CommentManager->getSignaledComments();
-	require("view/backend/commentsView.php");
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {	
+		$CommentManager = new CommentManager();
+		$comments = $CommentManager->getSignaledComments();
+		require("view/backend/commentsView.php");
+	}
+	else {
+		header("Location:index.php?action=connexion");
+	}
 }
 
 function deleteComment()
@@ -73,9 +99,14 @@ function deleteComment()
 
 function approveComment()
 {
-	$CommentManager = new CommentManager();
-	$comment = $CommentManager->doApproveComment($_GET['id']);
-	header("Location:index.php?action=listcomment");
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {
+		$CommentManager = new CommentManager();
+		$comment = $CommentManager->doApproveComment($_GET['id']);
+		header("Location:index.php?action=listcomment");
+	}
+	else {
+		header("Location:index.php?action=connexion");
+	}
 }
 
 
@@ -84,6 +115,7 @@ function adminConnect()
 	$UserManager = new UserManager();
 	$user = $UserManager->isUserAdmin($_POST['pseudoconnect'],$_POST['mdpconnect']);
 	if($user == TRUE) {
+		$_SESSION['connect']=1; 
 		header("Location:index.php?action=logon");
 	}
 	else {
@@ -94,18 +126,23 @@ function adminConnect()
 
 function addPost()
 {
-	require("view/backend/addPostView.php");
-	$PostManager = new PostManager();
-	if(isset($_POST['addPost'])) {
-		if(!empty($_POST['addTitle']) && !empty($_POST['addContent']) && !empty($_POST['addAbstract'])) {
-			$post = $PostManager->doAddPost($_POST['addTitle'],$_POST['addAbstract'],$_POST['addContent']);
-			header("Location:index.php?action=logon");
-		}
-		else {
-			throw new Exception("Tous les champs sont obligatoires !");
+	if(isset($_SESSION['connect']) && $_SESSION['connect']=="1") {	
+		require("view/backend/addPostView.php");
+		$PostManager = new PostManager();
+		if(isset($_POST['addPost'])) {
+			if(!empty($_POST['addTitle']) && !empty($_POST['addContent']) && !empty($_POST['addAbstract'])) {
+				$post = $PostManager->doAddPost($_POST['addTitle'],$_POST['addAbstract'],$_POST['addContent']);
+				header("Location:index.php?action=logon");
+			}
+			else {
+				throw new Exception("Tous les champs sont obligatoires !");
+				
+			}
 			
 		}
-		
+	}
+	else {
+		header("Location:index.php?action=connexion");
 	}
 }
 
