@@ -32,12 +32,28 @@
 					}
 						$posts->closeCursor();
 					?>
+					<nav aria-label="Page navigation">
+						<ul class="pagination pagination-lg  justify-content-center">
+							<?php
+								for($i=1; $i <= $countPage ; $i++){
+									if($i==$pagecourante){
+										echo '<li class="page-item disabled"><a class="page-link"href="index.php?page='.$i.'">'.$i.'<a/></li>';
+									}
+									else{
+										echo '<li class="page-item"><a class="page-link"href="index.php?page='.$i.'">'.$i.'<a/></li>';
+									}
+								}
+							?>
+						</ul>
+					</nav>
 					<?php $contentPage = ob_get_clean(); ?>	
 				</div>
 			</div>
-		</div>
+			
 
-	<div class="clearfix visible-sm-block"></div>	
+	<div class="clearfix visible-sm-block"></div>
+
+	
 </article>
 
 

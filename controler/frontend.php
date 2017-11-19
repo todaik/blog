@@ -9,6 +9,21 @@ function listPosts()
 	
 	$PostManager = new PostManager();
 	$posts = $PostManager->getPostsVisible(0,10);
+	$countPage = $PostManager->countPage();
+	$postByPage = 5;
+	if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page']>0 AND $_GET['page']<=$countPage) {
+        $_GET['page'] = intval($_GET['page']);
+        $pagecourante = $_GET['page'];
+
+    }
+    else {
+        
+        header('Location: index.php?page=1');
+    }
+
+	$depart = ($pagecourante-1) * $postByPage;
+	
+	$posts = $PostManager->getPostsVisible($depart,$postByPage);
 	require('view/frontend/indexView.php');
 }
 
@@ -51,6 +66,8 @@ function doSignaledComment($postId)
 		header('Location: index.php?action=post&id='.$postId);
 	}
 }
+
+
 
 
 

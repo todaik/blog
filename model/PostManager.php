@@ -91,6 +91,18 @@ class PostManager
 		return $total;
 	}
 
+	public function countPage()
+	{
+		$db = $this->dbConnect();
+		$posts = $db->query('SELECT COUNT(id) AS total FROM post WHERE statepost = \'visible\'');
+		$posts->execute(array());
+		$total = $posts->fetchColumn();
+		$pagesTotal = ceil($total / 5);
+		return $pagesTotal;
+		
+	}
+
+
 	protected function dbConnect()
 	{
 		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>pdo::ERRMODE_EXCEPTION));
