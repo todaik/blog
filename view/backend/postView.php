@@ -44,19 +44,12 @@
 						<p class="help-block text-danger"></p>
 					</div>
 				</div>
+				<select name="newstatepost">
+					<option <?php if($post['statepost']=='brouillon'){echo 'selected';}?>>brouillon</option>
+					<option <?php if($post['statepost']=='visible'){echo 'selected';}?>>visible</option>		
+				</select><br><br>
+				<p class="help-block text-danger"></p>
 
-				<div class="row">
-					<div class="control-group">
-						<div class="col-md-10 form-group floating-label-form-group controls">
-							<label id="newstatepost">Etat de l'article :</label>
-							<select name="newstatepost">
-								<option <?php if($post['statepost']=='brouillon'){echo 'selected';}?>>brouillon</option>
-								<option <?php if($post['statepost']=='visible'){echo 'selected';}?>>visible</option>		
-							</select><br><br>
-							<p class="help-block text-danger"></p>
-						</div>
-					</div>
-				</div>
 				<br><br>
 				<div id="success"></div>
 				<div class="control-group">
