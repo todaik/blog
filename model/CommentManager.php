@@ -38,18 +38,28 @@ class CommentManager
 		public function getSignaledComments()
 		{
 			$db = $this->dbConnect();
-			$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment, signaled FROM comments WHERE signaled >=1 ');
+			$comments = $db->prepare('SELECT id, post_id,author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS newdatecomment, signaled FROM comments WHERE signaled >=1 ORDER BY signaled DESC');
 		    $comments->execute();
 		   
 		    return $comments;
 		}
 
-		public function countSignaledcomments()
+		public function countSignaledComments()
 		{
 			$db = $this->dbConnect();
-			$comments = $db->query('SELECT COUNT(*) AS total FROM comments WHERE signaled >=1');
-			$comments->fetchColumn();
-			return $comments;
+			$comments = $db->query('SELECT COUNT(id) AS total FROM comments WHERE signaled >=1');
+			$comments->execute(array());
+			$total = $comments->fetchColumn();
+			return $total;
+		}
+
+		public function countComments()
+		{
+			$db = $this->dbConnect();
+			$comments = $db->query('SELECT COUNT(id) AS total FROM comments');
+			$comments->execute(array());
+			$total = $comments->fetchColumn();
+			return $total;
 		}
 
 

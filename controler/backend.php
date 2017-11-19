@@ -18,6 +18,12 @@ function logOn()
 		$CommentManager = new CommentManager();
 
 		$posts = $PostManager->getPosts(0,20);
+		$totalPost = $PostManager->countPosts();
+
+		$totalPostsVisible = $PostManager->countPostsVisible();
+		$totalPostsNotVisible = $PostManager->countPostsNotVisible();
+		$totalComments = $CommentManager->countComments();
+		$totalSignaled = $CommentManager->countSignaledComments();
 		
 		require('view/backend/indexView.php');
 	}

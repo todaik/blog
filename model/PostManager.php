@@ -62,14 +62,33 @@ class PostManager
 	    return $post;
 	}
 
-	public function count()
+
+
+	public function countPosts()
 	{
-		return $this->db->query('SELECT COUNT(*) FROM post')->fetchColumn();
+		$db = $this->dbConnect();
+		$posts = $db->query('SELECT COUNT(id) AS total FROM post');
+		$posts->execute(array());
+		$total = $posts->fetchColumn();
+		return $total;
 	}
 
-	public function save(post $post)
+	public function countPostsVisible()
 	{
+		$db = $this->dbConnect();
+		$posts = $db->query('SELECT COUNT(id) AS total FROM post WHERE statepost = \'visible\'');
+		$posts->execute(array());
+		$total = $posts->fetchColumn();
+		return $total;
+	}
 
+	public function countPostsNotVisible()
+	{
+		$db = $this->dbConnect();
+		$posts = $db->query('SELECT COUNT(id) AS total FROM post WHERE statepost != \'visible\'');
+		$posts->execute(array());
+		$total = $posts->fetchColumn();
+		return $total;
 	}
 
 	protected function dbConnect()
