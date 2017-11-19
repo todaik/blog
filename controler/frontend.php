@@ -6,9 +6,7 @@ require_once('model/CommentManager.php');
 
 function listPosts()
 {
-	
 	$PostManager = new PostManager();
-	$posts = $PostManager->getPostsVisible(0,10);
 	$countPage = $PostManager->countPage();
 	$postByPage = 5;
 	if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page']>0 AND $_GET['page']<=$countPage) {
