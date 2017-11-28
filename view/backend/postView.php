@@ -52,7 +52,7 @@
 				
 				<div class="control-group">
 					<div class="form-group col-lg-2 ">
-						<input type="submit" name="deletePost" value="supprimer" class="btn btn-secondary">
+						<a href="index.php?action=deletePost&id=<?=$_GET['id'];?>" class="btn btn-secondary">Supprimer</a>
 					</div>
 				</div>	
 			</form>
