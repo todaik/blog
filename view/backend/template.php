@@ -22,37 +22,12 @@
 
         <script>
             tinymce.init({ selector:'textarea',
-                        language: 'fr_FR' });
+                        language: 'fr_FR', height:"550"  });
         </script>
     </head>
  
     <body>
-        <nav class="navbar navbar-expand-lg navbar-inverse fixed-top" id="">
-          <div class="container">
-            <a class="navbar-brand" href="index.php?action=logon">Mon blog</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.php?action=logon">Accueil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="index.php?action=logon">Articles</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="index.php?action=listcomment">Commentaires</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="index.php?action=logoff">Déconnexion</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
+        
         <div class="container">
         <?= $contentPage ?>
         </div>
@@ -62,7 +37,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-8 col-md-10 mx-auto">
-                <p class="copyright text-muted"><a href="index.php?action=connexion" >Administration</a></p>
+                <p class="copyright text-muted"><a href="index.php?action=logoff">Déconnexion</a></p>
                 <p class="copyright text-muted">Copyright &copy; By Todaik tous droits réservés</p>
               </div>
             </div>

@@ -14,8 +14,14 @@
 </header>
  
 <?php ob_start();?>        
-
-
+<div class="container">
+	<div class="row">
+		<div class="">
+			<a href="index.php?action=logon" class="btn btn-secondary">Retour à la liste des articles</a>
+		</div>
+	</div>
+</div>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-xl-12 mx-auto">
@@ -39,19 +45,18 @@
 				<select name="newstatepost">
 					<option <?php if($post['statepost']=='brouillon'){echo 'selected';}?>>brouillon</option>
 					<option <?php if($post['statepost']=='visible'){echo 'selected';}?>>visible</option>		
-				</select><br><br>
+				</select>
 				<p class="help-block text-danger"></p>
 
-				<br><br>
 				<div id="success"></div>
 				<div class="control-group">
-					<div class="form-group col-lg-2">
+					<div class="form-group ">
 						<input type="submit" name="updatePost" value="modifier" class="btn btn-secondary">
 					</div>
 				</div>
 				
 				<div class="control-group">
-					<div class="form-group col-lg-2 ">
+					<div class="form-group ">
 						<a href="index.php?action=deletePost&id=<?=$_GET['id'];?>" class="btn btn-secondary">Supprimer</a>
 					</div>
 				</div>	
@@ -65,7 +70,7 @@
 				</div>
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-2">
+						<div class="">
 							<a href="index.php?action=logon" class="btn btn-secondary">liste des articles</a>
 						</div>
 					</div>

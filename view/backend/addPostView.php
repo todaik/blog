@@ -13,12 +13,20 @@
 </header>
 
  
-<?php ob_start();?>        
+<?php ob_start();?> 
+<div class="container">
+	<div class="row">
+		<div class="">
+			<a href="index.php?action=logon" class="btn btn-secondary">Retour à la liste des articles</a>
+		</div>
+	</div>
+</div>
+<br><br>      
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 mx-auto">
-			<form action="" method="post" class="form-inline" novalidate>
+        <div class="col-xl-12 mx-auto">
+			<form action="" method="post" class="" novalidate>
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls">
 						<label class="sr-only" for="addTitle">Titre:</label>
@@ -29,7 +37,7 @@
 				
 				
 				<div class="control-group">
-					<div class="form-group col-xs-12 floating-label-form-group controls">
+					<div class="form-group floating-label-form-group controls">
 						<label for="addContent">Billet:</label>
 						<textarea id="addContent"  placeholder="Insère ton billet ici" rows="20" cols="600"  name="addContent" >Vous pouvez écrire l'article ici.</textarea>
 						<p class="help-block text-danger"></p>
@@ -43,8 +51,8 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<div class="form-group col-lg-2">
-						<a href="index.php?action=logon" class="btn btn-secondary">liste des articles</a>
+					<div class="form-group">
+						<a href="index.php?action=logon" class="btn btn-secondary">Retour à la liste des articles</a>
 					</div>
 				</div>
 				<div class="container">
