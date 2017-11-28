@@ -77,7 +77,7 @@ try{
 			if(isset($_GET['id']) && $_GET['id']>0) {
 				updatePost();
 				backPost();
-				deletePost();
+				
 			}
 		}
 		elseif(($_GET['action'] == 'addpost')) {
@@ -96,10 +96,13 @@ try{
 		elseif (($_GET['action'] == 'approveComment')) {
 			if (isset($_GET['id']) && $_GET['id']>0) {
 				approveComment();
-			}
-			
+			}	
 		}
-	
+		elseif (($_GET['action'] == 'deletePost')) {
+			if (isset($_GET['id']) && $_GET['id']>0) {
+				deletePost();
+			}	
+		}
 	}
 	else {	
 		listPosts();
