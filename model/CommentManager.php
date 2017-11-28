@@ -1,5 +1,7 @@
 <?php
-class CommentManager
+require_once('model/Manager.php');
+
+class CommentManager extends Manager
 {
 	
 	public function doDeleteComments($postId)
@@ -78,9 +80,5 @@ class CommentManager
 		$req->execute(array('id'=>$idComment));
 	}
 
-	protected function dbConnect()
-	{
-		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>pdo::ERRMODE_EXCEPTION));
-	    return $db;
-	}
+
 }
