@@ -18,8 +18,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 mx-auto">
-			<form action="index.php?action=updatepost&id=<?=$_GET['id']?>" method="post" class="form-inline" novalidate>
+        <div class="col-xl-12 mx-auto">
+			<form action="index.php?action=updatepost&id=<?=$_GET['id']?>" method="post" class="" novalidate>
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls">	
 						<label for="newtitle" class="sr-only">Titre:</label>
@@ -28,19 +28,11 @@
 					</div>
 				</div>
 				<br><br>
-		
-				<div class="control-group">
-					<div class="form-group floating-label-form-group controls">
-						<label for="newAddAbstract">Résumé:</label><br>
-						<textarea  type="text" rows="5" cols="90" id="newAddAbstract"  name="newAddAbstract"><?= $post['abstract']; ?></textarea><br><br>
-						<p class="help-block text-danger"></p>
-					</div>
-				</div>
 
 				<div class="control-group">
 					<div class="form-group floating-label-form-group controls">	
 						<label for="newcontent">Billet:</label>
-						<textarea id="newcontent"  rows="20" cols="90" name="newcontent" ><?=$post['content']; ?></textarea>
+						<textarea id="newcontent"   name="newcontent" ><?=$post['content']; ?></textarea>
 						<p class="help-block text-danger"></p>
 					</div>
 				</div>
@@ -57,15 +49,29 @@
 						<input type="submit" name="updatePost" value="modifier" class="btn btn-secondary">
 					</div>
 				</div>
+				
 				<div class="control-group">
 					<div class="form-group col-lg-2 ">
 						<input type="submit" name="deletePost" value="supprimer" class="btn btn-secondary">
 					</div>
 				</div>	
 			</form>
+				<div class="container">
+					<div class="row">
+						<div class="">
+							<?php if(isset($_POST['updatePost'])){echo $_SESSION['message'];}?>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2">
+							<a href="index.php?action=logon" class="btn btn-secondary">liste des articles</a>
+						</div>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
-
 <?php $contentPage = ob_get_clean(); ?>
 <?php require('template.php'); ?> 

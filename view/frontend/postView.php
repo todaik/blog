@@ -5,7 +5,7 @@
 				<div class="post-heading">
 					
 					<h1><?php $titlePage = $post['title']; echo $titlePage;?></h1>
-					<h3><?=$post['abstract'];?></h3>
+					<h3>"Bien des infortunes sont mises au compte d'une malchance mystérieuse, et n'ont pour base unique, si l'on descend au fond des choses, que les actes mêmes de ceux qui les subissent." (Alexandre Dumas)</h3>
 				</div>
 				
 			</div>

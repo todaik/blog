@@ -27,15 +27,7 @@
 					</div>
 				</div>
 				
-				<div class="control-group">
-					<div class="form-group floating-label-form-group controls">
-						<label class="sr-only" for="addAbstract">Résumé:</label>
-						<textarea class="form-group" type="text" id="addAbstract"  placeholder="Insère ton résumé ici"  name="addAbstract" rows="5" cols="600" required data-validation-required-message="Entrez le titre.">
-						</textarea>
-						<p class="help-block text-danger"></p>
-
-					</div>
-				</div>
+				
 				<div class="control-group">
 					<div class="form-group col-xs-12 floating-label-form-group controls">
 						<label for="addContent">Billet:</label>
@@ -50,7 +42,18 @@
 						<input type="submit" name="addPost" value="Ajouter" class="btn btn-secondary">
 					</div>
 				</div>
-				
+				<div class="control-group">
+					<div class="form-group col-lg-2">
+						<a href="index.php?action=logon" class="btn btn-secondary">liste des articles</a>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="">
+							<?php if(isset($_POST['addPost'])&& isset($_POST['addTitle'])&& isset($_POST['addContent'])&& isset($_POST['addAbstract'])){echo $_SESSION['message'];}?>
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

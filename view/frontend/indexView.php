@@ -25,7 +25,7 @@
 						    <a href="index.php?action=post&amp;id=<?=$data['id']?>">
 						    <h2><?=$data['title']; ?></h2>
 						    <p class="post-meta">le <?= $data['newdatepost']; ?></p>
-						    <h3 class="post-subtitle"><?= $data['abstract'];?></h3> <br/>   
+						    <h3 class="post-subtitle"><?= substr($data['content'],0,150);?></h3> <br/>   
 						    <hr> 
 						</div>
 					<?php
