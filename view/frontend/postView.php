@@ -14,7 +14,7 @@
 </header>
 
 <?php ob_start();?>        
-
+<?=$_SESSION['message'];?>
 <article>
 	<div class="container">
 		<div class="row">

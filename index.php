@@ -1,8 +1,8 @@
 <?php  
 session_start();
+$_SESSION['message']="";
 require('controler/frontend.php');
 require('controler/backend.php');
-
 
 try{
 

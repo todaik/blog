@@ -141,9 +141,10 @@ function addPost()
 		$postManager = new PostManager();
 		if(isset($_POST['addPost'])) {
 			if(!empty($_POST['addTitle']) && !empty($_POST['addContent'])) {
+				
 				$post = $postManager->doAddPost($_POST['addTitle'],$_POST['addContent']);
 				$_SESSION['message']="La création du nouvel article a été réalisé avec succès !";
-				//header("Location:index.php?action=logon");
+				header("Location:index.php?action=logon");
 			}
 			else {
 				throw new Exception("Tous les champs sont obligatoires !");
