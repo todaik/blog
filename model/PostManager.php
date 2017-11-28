@@ -1,5 +1,7 @@
 <?php
-class PostManager 
+require_once('model/Manager.php');
+
+class PostManager extends Manager
 {
 	public function doAddPost($title,$abstract,$content)
 	{
@@ -103,9 +105,4 @@ class PostManager
 	}
 
 
-	protected function dbConnect()
-	{
-		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>pdo::ERRMODE_EXCEPTION));
-	    return $db;
-	}
 }

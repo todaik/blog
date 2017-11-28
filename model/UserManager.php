@@ -1,5 +1,7 @@
 <?php
-class UserManager
+require_once('model/Manager.php');
+
+class UserManager extends Manager
 {
 	public function getAdmin($pseudo,$mdp)
 	{
@@ -9,7 +11,7 @@ class UserManager
 		return $reqAdmin;
 	}
 
-	function isUserAdmin($pseudo,$mdp)
+	public function isUserAdmin($pseudo,$mdp)
 	{
 		$db = $this->dbConnect();
 		$reqAdmin = $db->prepare('SELECT * FROM user WHERE pseudo=:pseudo AND pass=:pass');
@@ -33,11 +35,5 @@ class UserManager
 	}
 
 
-
-	protected function dbConnect()
-	{
-		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>pdo::ERRMODE_EXCEPTION));
-	    return $db;
-	}
 }
 	
