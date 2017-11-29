@@ -21,7 +21,7 @@
 		<form method="POST" action="">
 			<input type="text" name="pseudoconnect" placeholder="pseudo">
 			<input type="password" name="mdpconnect" placeholder="Mot de passe">
-			<input type="submit" name="formconnexion" value="Se connecter">
+			<input type="submit" name="formconnexion" value="Se connecter" class="btn btn-secondary">
 		</form>	
 	</div>
 </body>
