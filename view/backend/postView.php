@@ -64,7 +64,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="">
-							<?php if(isset($_POST['updatePost'])){echo $_SESSION['message'];}?>
+							<?php 
+								if(isset($_POST['updatePost'])) { ?>
+									<div class="alert alert-success"> 
+										<?=$_SESSION['message'];}
+							?>
+									</div>
 						</div>
 					</div>
 				</div>
