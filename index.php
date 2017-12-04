@@ -14,8 +14,17 @@ try{
 		}
 		elseif($_GET['action'] == 'post') {
 			
+
 			if(isset($_GET['id']) && $_GET['id']>0) {
-				post();
+				$postManager = new PostManager();
+				$postExist = $postManager->checkPost($_GET['id']);
+				
+				if($postExist) {
+					post();
+				}
+				else {
+					listPosts();
+				}	
 
 			}
 			else {

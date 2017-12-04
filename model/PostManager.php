@@ -103,6 +103,23 @@ class PostManager extends Manager
 		
 	}
 
+	public function checkPost($id)
+	{
+		$db = $this->dbConnect();
+		$reqPost =$db->prepare('SELECT * FROM post WHERE id=:id');
+		$reqPost->execute(array('id' => $id));
+
+		$postExist = $reqPost->rowCount();
+		if($postExist == 1) {
+			
+	 		return TRUE;
+		}
+
+		else {
+			return FALSE;
+		}
+	}
+
 
 	
 }
