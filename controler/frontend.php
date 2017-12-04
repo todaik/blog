@@ -42,7 +42,7 @@ function post()
 function addComment($postId, $author, $comment)
 {
 	$commentManager = new CommentManager();
-	$affectedLines = $commentManager->postComment($_GET['id'], $_POST['author'], $_POST['comment']);
+	$affectedLines = $commentManager->postComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
 
 	if($affectedLines === false) {
 		throw new Exception("Impossible d\'ajouter le commentaire !");
