@@ -17,7 +17,7 @@ function logOn()
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
 
-		$posts = $postManager->getPosts(0,20);
+		$posts = $postManager->getPosts(0,100);
 		$totalPost = $postManager->countPosts();
 
 		$totalPostsVisible = $postManager->countPostsVisible();
@@ -63,7 +63,7 @@ function updatePost()
 			
 			$post = $postManager->doUpdatePost($_GET['id'],$_POST['newtitle'],$_POST['newcontent'],$_POST['newstatepost']);
 
-			$_SESSION['message']="La modification a été réalisée avec succès !";
+			$_SESSION['message']="Article modifié !";
 		}
 	}
 	else {
@@ -79,7 +79,7 @@ function deletePost()
 		
 		$commentManager->doDeleteComments($_GET['id']);
 		$postManager->doDeletePost($_GET['id']);
-		
+		$_SESSION['message']="Article et ses commentaires suprimés !";
 		header("Location:index.php?action=logon");
 		
 	}
@@ -143,7 +143,7 @@ function addPost()
 			if(!empty($_POST['addTitle']) && !empty($_POST['addContent'])) {
 				
 				$post = $postManager->doAddPost($_POST['addTitle'],$_POST['addContent']);
-				$_SESSION['message']="La création du nouvel article a été réalisé avec succès !";
+				$_SESSION['message']="Article ajouté en brouillon !";
 				//header("Location:index.php?action=logon");
 			}
 			else {

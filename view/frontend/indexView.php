@@ -25,7 +25,7 @@
 						    <a href="index.php?action=post&amp;id=<?=$data['id']?>">
 						    <h2><?=$data['title']; ?></h2>
 						    <p class="post-meta">le <?= $data['newdatepost']; ?></p>
-						    <h4 class="post-subtitle"><?= mb_strimwidth($data['content'], 0,200,"...");?></h4> <br/>   
+						    <h4 class="post-subtitle"><?= mb_strimwidth($data['content'], 0,500,"...");?></h4> <br/>   
 						    <hr> 
 						</div>
 					<?php

@@ -58,7 +58,7 @@ function doSignaledComment($postId)
 	$commentManager = new CommentManager();
 	$affectedLines = $commentManager->incrementSignaledComment($_GET['idComment']);
 
-	$_SESSION['message']="Le signalement a été réalisé avec succès !";
+	$_SESSION['message']="Commentaire signalé !";
 
 	if($affectedLines === false) {
 		throw new Exception("Impossible de signaler le commentaire !");
